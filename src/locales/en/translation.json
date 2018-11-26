@@ -1,0 +1,50 @@
+{
+  "404": {
+    "title": "Not found",
+    "description": "Sorry, this page does not exist"
+  },
+  "sidebar": {
+    "activities": "Activities",
+    "heatmap": "Heatmap",
+    "map": "Map"
+  },
+  "index": {
+    "description": "In <1/>, you <3/> <4><0>{{count}}</0></4> times for a total of <6>{{distance}}</6> km during <8>{{duration}}</8>",
+    "distance": "{{distance, km}}",
+    "duration": "{{duration, hourMinSecond}}",
+    "select": {
+      "month": "{{date, MMMM YYYY}}",
+      "run": "ran",
+      "ride": "rided"
+    }
+  },
+  "heatmap": {
+    "running": "Running",
+    "bike": "Biking",
+    "swimming": "Swimming",
+    "dialog": {
+      "date": "{{date, DD MMMM YYYY}}",
+      "label": {
+        "title": "Title",
+        "time": "Time",
+        "distance": "Distance"
+      },
+      "activity": {
+        "time": "{{date, HH:mm}}",
+        "distance": "{{distance, km}}km",
+        "duration": "{{duration, hourMinSecond}}",
+        "see": "See"
+      }
+    }
+  },
+  "map": {
+    "description": "Activities in <1/> near <3/>"
+  },
+  "activity": {
+    "date": "{{date, DD MMM YY à hh:mm}}",
+    "min_per_km": "{{speed, minPerKm}} /km",
+    "km_per_hour": "{{speed, kmPerHour}} km/h",
+    "distance": "{{distance, km}} km",
+    "duration": "{{duration, hourMinSecond}}"
+  }
+}

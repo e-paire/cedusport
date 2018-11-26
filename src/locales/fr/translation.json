@@ -1,0 +1,51 @@
+{
+  "404": {
+    "title": "Page introuvable",
+    "description": "Désolé, cette page n'existe pas"
+  },
+  "sidebar": {
+    "activities": "Activités",
+    "heatmap": "Carte de chaleur",
+    "map": "Carte"
+  },
+  "index": {
+    "description": "En <1/>, vous avez <3/> <4><0>{{count}}</0></4> fois pour un total de <6>{{distance}}</6> km en <8>{{duration}}</8>",
+    "distance": "{{distance, km}}",
+    "duration": "{{duration, hourMinSecond}}",
+    "select": {
+      "month": "{{date, MMMM YYYY}}",
+      "run": "courru",
+      "ride": "roulé"
+    }
+  },
+  "heatmap": {
+    "description": "Activitiés sur les {{count}} dernières semaines",
+    "running": "Course à pieds",
+    "bike": "Vélo",
+    "swimming": "Natation",
+    "dialog": {
+      "date": "{{date, DD MMMM YYYY}}",
+      "label": {
+        "title": "Titre",
+        "time": "Heure",
+        "distance": "Distance"
+      },
+      "activity": {
+        "time": "{{date, HH:mm}}",
+        "distance": "{{distance, km}}km",
+        "duration": "{{duration, hourMinSecond}}",
+        "see": "Voir"
+      }
+    }
+  },
+  "map": {
+    "description": "Activités en <1/> près de <3/>"
+  },
+  "activity": {
+    "date": "{{date, DD MMM YY à hh:mm}}",
+    "min_per_km": "{{speed, minPerKm}} /km",
+    "km_per_hour": "{{speed, kmPerHour}} km/h",
+    "distance": "{{distance, km}} km",
+    "duration": "{{duration, hourMinSecond}}"
+  }
+}

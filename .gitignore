@@ -1,0 +1,5 @@
+.cache/
+.env
+.strava/
+node_modules/
+public
