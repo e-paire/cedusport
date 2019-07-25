@@ -4980,17 +4980,6 @@ gatsby-link@^2.0.6:
     "@types/reach__router" "^1.0.0"
     prop-types "^15.6.1"
 
-gatsby-link@next:
-  version "2.0.0-rc.4"
-  resolved "https://registry.yarnpkg.com/gatsby-link/-/gatsby-link-2.0.0-rc.4.tgz#9db9da36db7e31efba09d5929a086a0a499989ac"
-  integrity sha512-Q8PwqxlD5IHnh8FwGqWwq4ddjzmFNoqeAfzhQooqvOyhiz4d1USxAny/ITyAe0BYFXcCLNoPB+9v+WHLdRr4Mg==
-  dependencies:
-    "@babel/runtime" "^7.0.0"
-    "@reach/router" "^1.1.1"
-    "@types/reach__router" "^1.0.0"
-    prop-types "^15.6.1"
-    ric "^1.3.0"
-
 gatsby-plugin-copy-files@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-copy-files/-/gatsby-plugin-copy-files-1.0.1.tgz#844807697ae34a96d41eead68de5874a0a36c1ce"
@@ -5038,10 +5027,10 @@ gatsby-plugin-slug@^1.0.1:
   dependencies:
     parse-filepath "^1.0.2"
 
-gatsby-plugin-styled-components@next:
-  version "3.0.0-rc.5"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.0.0-rc.5.tgz#19e2ab9c73f7c873a3171e73d487266f388eedc4"
-  integrity sha512-keuoCBdtj5Wkxmwe23azK0aTYRzOSgKVcWfvVSR0EAavSBhJOamoMYGBfskZY9w5Xjq/eLlyCQwcbFSdI4GZfQ==
+gatsby-plugin-styled-components@^3.0.4:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-styled-components/-/gatsby-plugin-styled-components-3.1.0.tgz#ce837299807247cf2c4347bd51aaed4c58c195d9"
+  integrity sha512-VMaq82vU7WsfXj5kOxGJP7w9MOUUxT3mcs4NYZqHGvFU+2+oeO70SJ1WoeB5TSIFEKlNhGUiKTdL6NcMh54/nA==
   dependencies:
     "@babel/runtime" "^7.0.0"
 
@@ -5074,12 +5063,11 @@ gatsby-source-filesystem@^2.0.8:
     valid-url "^1.0.9"
     xstate "^3.1.0"
 
-gatsby-source-strava@^1.3.3:
-  version "1.3.3"
-  resolved "https://registry.yarnpkg.com/gatsby-source-strava/-/gatsby-source-strava-1.3.3.tgz#cca28c52bef92b06f8291a50a742d478654caf55"
-  integrity sha512-+0FfVfgfdSfy7zBAPCjJzxz1C83xAuZB68zpOJZxsn6GHxcFuSsD2eiheDzqTwSqOmz+sXWId39mkJvdXqZNsA==
+gatsby-source-strava@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/gatsby-source-strava/-/gatsby-source-strava-1.4.1.tgz#305d14faf1750235c46bdd82c932d07d44c03381"
+  integrity sha512-OAHM3FHfvNMIUT9QN8k+tgXrVz0Trbg3HHKOGlIacm2eLbruCcBIumYUfTfAxuSdsEcPY09EIdp0RObpz6DNdg==
   dependencies:
-    gatsby "^2.0.0"
     strava-v3 "^1.14.0"
     system-sleep "^1.3.6"
 
@@ -9739,11 +9727,6 @@ rgba-regex@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/rgba-regex/-/rgba-regex-1.0.0.tgz#43374e2e2ca0968b0ef1523460b7d730ff22eeb3"
   integrity sha1-QzdOLiyglosO8VI0YLfXMP8i7rM=
-
-ric@^1.3.0:
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/ric/-/ric-1.3.0.tgz#8e95042609ce8213548a83164d08e94fae94909f"
-  integrity sha1-jpUEJgnOghNUioMWTQjpT66UkJ8=
 
 rimraf@^2.2.8, rimraf@^2.5.0, rimraf@^2.5.4, rimraf@^2.6.1, rimraf@^2.6.2:
   version "2.6.2"
