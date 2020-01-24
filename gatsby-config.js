@@ -1,10 +1,10 @@
 const path = require("path")
 
-if (process.env.NODE_ENV === "development") {
-  require("dotenv").config({
-    path: `.env`,
-  })
-}
+// if (process.env.NODE_ENV === "development") {
+require("dotenv").config({
+  path: `.env`,
+})
+// }
 
 module.exports = {
   siteMetadata: {
@@ -40,7 +40,10 @@ module.exports = {
       resolve: "gatsby-source-strava",
       options: {
         debug: true,
-        token: process.env.GATSBY_STRAVA_TOKEN,
+        config: {
+          clientId: process.env.GATSBY_STRAVA_CLIENT_ID,
+          clientSecret: process.env.GATSBY_STRAVA_CLIENT_SECRET,
+        },
         activitiesOptions: {
           cacheDir: `${__dirname}/.strava`,
           after: process.env.GATSBY_STRAVA_AFTER || null,
@@ -65,8 +68,7 @@ module.exports = {
           withKoms: false,
           withRoutes: false,
           withStats: true,
-
-          withZones: true,
+          withZones: false,
         },
       },
     },
