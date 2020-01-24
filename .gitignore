@@ -1,5 +1,5 @@
 .cache/
 .env
-.strava/
+# .strava/
 node_modules/
 public

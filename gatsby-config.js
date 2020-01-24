@@ -1,10 +1,8 @@
 const path = require("path")
 
-if (process.env.NODE_ENV === "development") {
-  require("dotenv").config({
-    path: `.env`,
-  })
-}
+require("dotenv").config({
+  path: `.env`,
+})
 
 module.exports = {
   siteMetadata: {
@@ -39,11 +37,9 @@ module.exports = {
     {
       resolve: "gatsby-source-strava",
       options: {
-        debug: true,
-        token: process.env.GATSBY_STRAVA_TOKEN,
-        activitiesOptions: {
-          cacheDir: `${__dirname}/.strava`,
-          after: process.env.GATSBY_STRAVA_AFTER || null,
+        debug: process.env.GATSBY_SOURCE_STRAVA_DEBUG || false,
+        activities: {
+          after: process.env.GATSBY_SOURCE_STRAVA_AFTER || null,
           streamsTypes: [
             "time",
             "distance",
@@ -59,14 +55,27 @@ module.exports = {
           withRelated: false,
           withStreams: true,
           withZones: false,
+          extend: ({activity}) => {
+            activity.extendd = true
+          },
         },
-        athleteOptions: {
-          computeHeartrateMax: true,
+        athlete: {
           withKoms: false,
           withRoutes: false,
           withStats: true,
+          withZones: false,
+          extend: ({activities, athlete}) => {
+            let heartrateMax
+            activities.forEach(activity => {
+              if (activity.has_heartrate) {
+                if (!heartrateMax || activity.max_heartrate > heartrateMax) {
+                  heartrateMax = activity.max_heartrate
+                }
+              }
+            })
 
-          withZones: true,
+            athlete.heartrateMax = heartrateMax
+          },
         },
       },
     },
