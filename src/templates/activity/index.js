@@ -1,25 +1,22 @@
-import {graphql} from "gatsby"
-import React from "react"
-import styled from "styled-components"
-import {ifProp, palette} from "styled-tools"
-import {Inline, Flex, Grid, Heading, Table} from "reakit"
-import Measure from "react-measure"
 import format from "date-fns/format"
 import frLocale from "date-fns/locale/fr"
-
+import {graphql} from "gatsby"
+import React from "react"
+import Measure from "react-measure"
+import {Flex, Grid, Heading, Inline, Table} from "reakit"
+import styled from "styled-components"
+import {ifProp, palette} from "styled-tools"
 import Layout from "~/layouts/index"
-
-import Map from "./map"
-
-import {getAnalyzedPaces, getAnalyzedHeartRates} from "~/utils/activity"
+import {getAnalyzedHeartRates, getAnalyzedPaces} from "~/utils/activity"
 import {
-  metersToKilometers,
-  metersPerSecondToMinPerKm as mpsToMpk,
-  metersPerSecondTokmPerHour as mpsToKph,
   hrssToHrssPerHour,
+  metersPerSecondTokmPerHour as mpsToKph,
+  metersPerSecondToMinPerKm as mpsToMpk,
+  metersToKilometers,
 } from "~/utils/convertors"
-import {secondsToString, secondsToHms} from "~/utils/formattors"
+import {secondsToHms, secondsToString} from "~/utils/formattors"
 import theme from "~/utils/theme"
+import Map from "./map"
 
 const Overview = styled(Grid)`
   @media ${theme.device.mobile} {
@@ -135,6 +132,11 @@ class Activity extends React.PureComponent {
         stravaActivity: {activity},
       },
     } = this.props
+
+    if (!activity.streams || !activity.streams.time) {
+      return null
+    }
+
     const timeObject = secondsToHms(
       activeIndex ? activity.streams.time[activeIndex] : activity.elapsed_time
     )
@@ -168,6 +170,11 @@ class Activity extends React.PureComponent {
         stravaActivity: {activity},
       },
     } = this.props
+
+    if (!activity.streams || !activity.streams.distance) {
+      return null
+    }
+
     return (
       <>
         <Label>{activeIndex ? "active distance" : "total distance"}</Label>
@@ -190,6 +197,11 @@ class Activity extends React.PureComponent {
         stravaActivity: {activity},
       },
     } = this.props
+
+    if (!activity.streams || !activity.streams.heartrate) {
+      return null
+    }
+
     return (
       <>
         <Label>
@@ -214,6 +226,11 @@ class Activity extends React.PureComponent {
         stravaActivity: {activity},
       },
     } = this.props
+
+    if (!activity.streams || !activity.streams.velocity_smooth) {
+      return null
+    }
+
     return (
       <>
         <Label>{activeIndex ? "active pace" : "average pace"}</Label>
@@ -268,6 +285,11 @@ class Activity extends React.PureComponent {
         stravaActivity: {activity},
       },
     } = this.props
+
+    if (!activity.streams || !activity.streams.altitude) {
+      return null
+    }
+
     return (
       <>
         <Label>{activeIndex ? "active alt" : "Dénivellé"}</Label>
@@ -294,6 +316,11 @@ class Activity extends React.PureComponent {
         stravaActivity: {activity},
       },
     } = this.props
+
+    if (!activity.streams || !activity.streams.velocity_smooth) {
+      return null
+    }
+
     return (
       <>
         <Label>{activeIndex ? "Active speed" : "Average speed"}</Label>
@@ -309,6 +336,42 @@ class Activity extends React.PureComponent {
     )
   }
 
+  renderAnalyzedPaces() {
+    const {
+      data: {
+        stravaActivity: {activity},
+      },
+    } = this.props
+
+    if (!activity.streams || !activity.streams.velocity_smooth) {
+      return null
+    }
+
+    const analyzedPaces = getAnalyzedPaces(activity.streams.velocity_smooth)
+    return (
+      <Grid.Item background="#fff">
+        <Table borderLeft={0}>
+          <thead>
+            <tr>
+              <td>Pace</td>
+              <th>Time</th>
+              <th>%</th>
+            </tr>
+          </thead>
+          <tbody>
+            {Object.keys(analyzedPaces).map(z => (
+              <tr key={z}>
+                <th>{z}</th>
+                <td>{secondsToString(analyzedPaces[z].seconds)}</td>
+                <td>{analyzedPaces[z].percent} %</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
+      </Grid.Item>
+    )
+  }
+
   render() {
     const {
       data: {
@@ -316,8 +379,7 @@ class Activity extends React.PureComponent {
       },
     } = this.props
 
-    const {heartrate: hrArray, velocity_smooth: pacesArray} = activity.streams
-    const analyzedPaces = getAnalyzedPaces(pacesArray)
+    const {heartrate: hrArray} = activity.streams
     const {
       heartRates: analyzedHR,
       heartRateStressScore,
@@ -436,26 +498,7 @@ class Activity extends React.PureComponent {
               </Table>
             </Grid.Item>
           )}
-          <Grid.Item background="#fff">
-            <Table borderLeft={0}>
-              <thead>
-                <tr>
-                  <td>Pace</td>
-                  <th>Time</th>
-                  <th>%</th>
-                </tr>
-              </thead>
-              <tbody>
-                {Object.keys(analyzedPaces).map(z => (
-                  <tr key={z}>
-                    <th>{z}</th>
-                    <td>{secondsToString(analyzedPaces[z].seconds)}</td>
-                    <td>{analyzedPaces[z].percent} %</td>
-                  </tr>
-                ))}
-              </tbody>
-            </Table>
-          </Grid.Item>
+          {this.renderAnalyzedPaces()}
         </Grid>
       </Layout>
     )
