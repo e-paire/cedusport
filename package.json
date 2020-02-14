@@ -26,7 +26,7 @@
     "i18next-browser-languagedetector": "^2.2.4",
     "i18next-sync-fs-backend": "^1.1.0",
     "i18next-xhr-backend": "^1.5.1",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.13",
     "polished": "^2.0.3",
     "r-dom": "^2.4.0",
     "react": "^16.4.2",
